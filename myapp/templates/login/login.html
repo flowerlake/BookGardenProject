@@ -1,0 +1,308 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <meta name="description" content="成都大学信息科学与工程学院实训实习系统"> -->
+    <meta content="width=device-width, initial-scale=1, user-scalable=no" name="viewport">
+    <title>博慧书苑</title>
+    {% load static %}
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'image/wallhaven.png' %}">
+    <!--font-awesome css-->
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css"/>
+    <!-- Google icon -->
+    <!--<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">-->
+    <!-- Bootstrap css -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+    <!--bootstrapValidator css-->
+    <link rel="stylesheet" href="{% static '/css/bootstrapValidator.css' %}"/>
+    <!--normalize css-->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/normalize.css' %}">
+    <!-- Propeller css -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/propeller.min.css' %}">
+    <!-- Propeller theme css-->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/propeller-theme.css' %}"/>
+    <!-- Propeller admin theme css-->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/propeller-admin.css' %}">
+    <!--my style css-->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/front-style.css' %}">
+    <!--login css-->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
+    <!-- Styles Ends -->
+</head>
+{% load static %}
+
+<body class="body-custom" style="height:unset;background: url({% static 'image/fefmkrmg.jpg' %});">
+<!--顶部-->
+<!-- <nav class="navbar navbar-inverse navbar-fixed-top pmd-navbar pmd-z-depth-2">
+    <div class="container-fluid"> -->
+<!-- Brand and toggle get grouped for better mobile display -->
+<!--左侧滑-->
+<!-- <div class="navbar-header">
+            <a style="line-height: 5rem;" href="javascript:void(0);" class="navbar-brand">
+        信息工程大学
+      </a>
+        </div>
+    </div>
+</nav> -->
+<div class="logincard" style="transform:unset">
+    <div class="pmd-card card-default pmd-z-depth">
+        <!--登录模块-->
+        <div class="login-card">
+            <form action="" method="post">
+                {% csrf_token %}
+                <!--头部-->
+                <div class="pmd-card-title card-header-border text-center">
+                    <div class="loginlogo">
+                        {% load static %}
+                        <a href="javascript:void(0);"><img src=".{% static 'image/zhinan.png' %}" alt="Logo"></a>
+                    </div>
+                    <h3>数据之光书苑</h3>
+                    <!--<p>{{ rlt }}</p>-->
+                </div>
+                <!--身体-->
+                <div class="pmd-card-body">
+                    <div class="alert alert-success" role="alert"> 用户名或密码错误！</div>
+                    <div class="form-group pmd-textfield pmd-textfield-floating-label">
+                        <label for="xuehao1" class="control-label pmd-input-group-label">学号</label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="material-icons md-dark pmd-sm">perm_identity</i>
+                            </div>
+                            <input type="text" class="form-control" name="stu_id" id="xuehao1">
+                        </div>
+                    </div>
+                    <div class="form-group pmd-textfield pmd-textfield-floating-label">
+                        <label for="password" class="control-label pmd-input-group-label">密码</label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="material-icons md-dark pmd-sm">lock_outline</i>
+                            </div>
+                            <input type="password" class="form-control" name="password" id="password">
+                            <!--<i class="glyphicon glyphicon-eye-close form-control-feedback" id="toogle-password"></i>-->
+                        </div>
+                    </div>
+                </div>
+                <!--底部-->
+                <div class="pmd-card-footer card-footer-no-border card-footer-p16 text-center">
+                    <div class="form-group clearfix">
+                        <div class="checkbox pull-left">
+                            <label class="pmd-checkbox pmd-checkbox-ripple-effect">
+                                <input type="checkbox" value="">
+                                <span class="pmd-checkbox"> 记住密码</span>
+                            </label>
+                        </div>
+                        <span class="pull-right forgot-password">
+                            <a href="javascript:void(0);">忘记密码?</a>
+                        </span>
+                    </div>
+                    <button type="submit" class="btn pmd-ripple-effect btn-primary btn-block">登录</button>
+                    <p class="redirection-link">还没有账户？ <a href="javascript:void(0);" class="login-register">注册</a>. </p>
+                </div>
+            </form>
+        </div>
+        <!--注册模块-->
+        <div class="register-card">
+            <div class="pmd-card-title card-header-border text-center">
+                <div class="loginlogo">
+                    {% load static %}
+                    <a href="javascript:void(0);"><img src="{% static 'image/zhinan.png' %}" alt="Logo"></a>
+                </div>
+                <h2><span> <strong>注册</strong></span></h2>
+            </div>
+            <form id="defaultForm" method="post">
+                {% csrf_token %}
+                <div class="pmd-card-body">
+                    <div class="verification-body">
+                        <div class="form-group pmd-textfield pmd-textfield-floating-label">
+                            <label for="forgot-email" class="control-label pmd-input-group-label">邮箱</label>
+                            <div class="input-group">
+                                <div class="input-group-addon"><i class="material-icons md-dark pmd-sm">email</i></div>
+                                <input type="text" class="form-control" name="email" id="forgot-email">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group pmd-textfield pmd-textfield-floating-label">
+                        <label for="name" class="control-label pmd-input-group-label">姓名</label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="material-icons md-dark pmd-sm">domain</i></div>
+                            <input type="text" class="form-control" name="stu_name" id="name">
+                        </div>
+                    </div>
+                    <div class="form-group pmd-textfield pmd-textfield-floating-label">
+                        <label for="xuehao" class="control-label pmd-input-group-label">学号</label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="material-icons md-dark pmd-sm">perm_identity</i>
+                            </div>
+                            <input type="text" class="form-control" name="stu_id" id="xuehao">
+                        </div>
+                    </div>
+                    <div class="form-group pmd-textfield pmd-textfield-floating-label">
+                        <label for="password1" class="control-label pmd-input-group-label">密码</label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="material-icons md-dark pmd-sm">lock</i></div>
+                            <input type="password" class="form-control" name="password" id="password1">
+                        </div>
+                    </div>
+                    <div class="form-group pmd-textfield pmd-textfield-floating-label">
+                        <label for="password2" class="control-label pmd-input-group-label">确认密码</label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="material-icons md-dark pmd-sm">lock</i></div>
+                            <input type="password" class="form-control" name="confirmPassword" id="password2">
+                        </div>
+                    </div>
+                    <div class="form-group pmd-textfield pmd-textfield-floating-label">
+                        <label for="qd" class="control-label pmd-input-group-label">区队</label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="material-icons md-dark pmd-sm">perm_identity</i>
+                            </div>
+                            <!-- <input type="text" class="form-control" name="stu_qd" id="qd" list="qd_list"> -->
+                            <select class="form-control" id="qd" name="stu_qd">
+                                <datalist id="qd_list">
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                </datalist>
+                            </select>
+
+                        </div>
+                    </div>
+                    <div class="form-group pmd-textfield pmd-textfield-floating-label">
+                        <label for="classes" class="control-label pmd-input-group-label">班级</label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="material-icons md-dark pmd-sm">perm_identity</i>
+                            </div>
+                            <input type="password" class="form-control" name="stu_class" id="classes">
+                        </div>
+                    </div>
+                    <div class="form-group pmd-textfield pmd-textfield-floating-label">
+                        <label for="dorm" class="control-label pmd-input-group-label">宿舍号</label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="material-icons md-dark pmd-sm">perm_identity</i>
+                            </div>
+                            <input type="password" class="form-control" name="stu_dorm" id="dorm">
+                        </div>
+                    </div>
+                    <div class="pmd-card-footer card-footer-no-border card-footer-p16 text-center">
+                        <button id="submit" type="submit" class="btn pmd-ripple-effect btn-primary btn-block">注册
+                        </button>
+                        <p class="redirection-link">已经有账户了？ <a href="javascript:void(0);" class="register-login">登录</a>.
+                        </p>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <!--忘记密码-->
+        <div class="forgot-password-card">
+            <div class="pmd-card-title card-header-border text-center">
+                <div class="loginlogo">
+                    <a href="javascript:void(0);"><img src="{% static 'image/zhinan.png' %}" alt="Logo"></a>
+                </div>
+                <h3>找回密码<br><span>请联系高杨</span></h3>
+            </div>
+            <form id="defaultFormm" method="post">
+                <div class="pmd-card-body">
+                    <div class="pmd-card-footer card-footer-no-border card-footer-p16 text-center">
+                        <!-- <button type="submit" class="btn pmd-ripple-effect btn-primary btn-block">提交</button> -->
+                        <p class="redirection-link">已经找回密码？<a href="javascript:void(0);" class="register-login">返回登录</a>
+                        </p>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- <footer class="footer">
+<div class="container-fluid">
+    <ul class="list-inline">
+        <li>
+            <span class="pmd-card-subtitle-text">信息科学与工程学院 &copy; 2017. 版权所有.</span>
+            <h3 class="pmd-card-subtitle-text">技术支持 BY <a href="http://computer.cdu.edu.cn/" target="_blank">信工学院.</a></h3>
+        </li>
+        <li class="pull-right download-now">
+            <a onClick="downloadPMDadmintemplate()" href="javascript：void(0);">
+                <div>
+                    <i class="material-icons media-left pmd-sm">settings</i>
+                </div>
+                <div>
+                    <span class="pmd-card-subtitle-text">Version- 1.0.0</span>
+                    <h3 class="pmd-card-title-text">By 信工学院同创工作室</h3>
+                </div>
+            </a>
+        </li>
+        <li class="pull-right for-support">
+            <a href="mailto:support@propeller.in">
+                <div>
+                    <i class="material-icons media-left pmd-sm">email</i>
+                </div>
+                <div>
+                    <span class="pmd-card-subtitle-text">For Support</span>
+                    <h3 class="pmd-card-title-text">450311265@qq.com</h3>
+                </div>
+            </a>
+        </li>
+    </ul>
+</div>
+</footer> -->
+<!-- Scripts Starts -->
+{% load static %}
+<script src="{% static 'js/jquery-1.12.2.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/propeller.min.js' %}"></script>
+<!-- <script src="{% static 'js/bootstrapValidator.js' %}"></script> -->
+<link rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.2/css/bootstrapValidator.min.css"/>
+<script type="text/javascript"
+        src="//cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.2/js/bootstrapValidator.min.js"></script>
+<script>
+    $(document).ready(function () {
+        var sPath = window.location.pathname;
+        var sPage = sPath.substring(sPath.lastIndexOf('/') + 1);
+        $(".pmd-sidebar-nav").each(function () {
+            $(this).find("a[href='" + sPage + "']").parents(".dropdown").addClass("open");
+            $(this).find("a[href='" + sPage + "']").parents(".dropdown").find('.dropdown-menu').css("display", "block");
+            $(this).find("a[href='" + sPage + "']").parents(".dropdown").find('a.dropdown-toggle').addClass("active");
+            $(this).find("a[href='" + sPage + "']").addClass("active");
+        });
+    });
+</script>
+<!-- login page sections show hide -->
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.app-list-icon li a').addClass("active");
+        $(".login-for").click(function () {
+            $('.login-card').hide()
+            $('.forgot-password-card').show();
+        });
+        $(".signin").click(function () {
+            $('.login-card').show()
+            $('.forgot-password-card').hide();
+        });
+    });
+</script>
+<!--控制三个面板的显示和隐藏-->
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".login-register").click(function () {
+            $('.login-card').hide()
+            $('.forgot-password-card').hide();
+            $('.register-card').show();
+        });
+
+        $(".register-login").click(function () {
+            $('.register-card').hide()
+            $('.forgot-password-card').hide();
+            $('.login-card').show();
+        });
+        $(".forgot-password").click(function () {
+            $('.login-card').hide()
+            $('.register-card').hide()
+            $('.forgot-password-card').show();
+        });
+    });
+</script>
+<!--<script src="../assets/js/style.js"></script>-->
+<!--<script src="{% static 'js/login.js' %}"></script>-->
+</body>
+
+</html>

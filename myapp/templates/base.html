@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+{% load static %}
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="{% static 'image/wallhaven.png' %}">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>博慧书苑</title>
+    <!-- Bootstrap -->
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <!-- HTML5 shim 和 Respond.js 是为了让 IE8 支持 HTML5 元素和媒体查询（media queries）功能 -->
+    <!-- 警告：通过 file:// 协议（就是直接将 html 页面拖拽到浏览器中）访问页面时 Respond.js 不起作用 -->
+    <!--[if lt IE 9]>
+    <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/4.1.0/echarts.min.js"></script>
+</head>
+
+<body>
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Home</a>
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#Stamina">Physical Analysis<span class="sr-only">(current)</span></a></li>
+                <li><a href="#books analyse">Book Borrowing Analysis</a></li>
+                <!-- <li><a href="/sleep">睡眠情况记录</a></li> -->
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                       aria-expanded="false">Apps<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/stamina">Add Physical Score</a></li>
+                        <li><a href="/load_book">Borrow Book</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="http://www.getyo.cn">scarecrow‘s blog</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li>
+                            <a href="https://www.liaoxuefeng.com/wiki/001434446689867b27157e896e74d51a89c25cc8b43bdb3000">廖雪峰的JavaScript学习法</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <!--<form class="navbar-form navbar-left">-->
+            <!--<div class="form-group">-->
+            <!--<input type="text" class="form-control" placeholder="Search">-->
+            <!--</div>-->
+            <!--<button type="submit" class="btn btn-default">Submit</button>-->
+            <!--</form>-->
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="http://www.getyo.cn/?page_id=417">信息发布</a></li>
+                <li><a href="/admin">登录(admin)</a></li>
+                <li><a href="/login">登录/注册</a></li>
+                <!--<button type="button" class="btn btn-default navbar-btn"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></button>-->
+                <!--<li class="dropdown">-->
+                <!--<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-user"></span></a>-->
+                <!--<ul class="dropdown-menu">-->
+                <!--<li><a href="/activities">登录/注册</a></li>-->
+                <!--<li><a href="/logout">退出</a></li>-->
+                <!--<li><a href="#">Something else here</a></li>-->
+                <!--<li role="separator" class="divider"></li>-->
+                <!--<li><a href="#">Separated link</a></li>-->
+            </ul>
+            </li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container-fluid -->
+</nav>
+<main role="main">
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="jumbotron">
+        <div class="container">
+            <h2 class="display-3">Hello, visitor!</h2>
+            <p>This is a comprehensive website integrating physical analysis and book borrowing</p>
+            <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>
+        </div>
+    </div>
+    <!-- <div class="container"> -->
+    <!-- Example row of columns -->
+    <!-- <div class="row">
+        <h2 align="center">精选博文推荐</h2>
+        <div class="col-md-4">
+            <h3>聊聊我对现代前端框架的认知</h3>
+            <p>现在前端界有三大框架横行，Vue，React，Angular，几乎是所有身为一名前端工程师所必备的一项技能。</p>
+            <p><a class="btn btn-secondary" href="https://juejin.im/entry/5a6e91ce51882573256c0f53" role="button">View details &raquo;</a></p>
+        </div>
+        <div class="col-md-4">
+            <h3>MySQL 入门教程</h3>
+            <p>MySQL 为关系型数据库(Relational Database Management System), 这种所谓的"关系型"可以理解为"表格"的概念</p>
+            <p><a class="btn btn-secondary" href="http://www.cnblogs.com/mr-wid/archive/2013/05/09/3068229.html" role="button">View details &raquo;</a></p>
+        </div>
+        <div class="col-md-4">
+            <h3>神经网络-激活函数-面面观(Activation Function)</h3>
+            <p>日常 coding 中，我们会很自然的使用一些激活函数，比如：sigmoid、ReLU等等。不过好像忘了问自己一(n)件事：</p>
+            <p><a class="btn btn-secondary" href="https://blog.csdn.net/cyh_24/article/details/50593400" role="button">View details &raquo;</a></p>
+        </div>
+    </div>
+    <hr>
+</div> -->
+    <!-- /container -->
+    <!-- <div id="Stamina" class="container">
+        <h2 align="center">Physical Analysis</h2>
+    </div>
+    <div id="Stamina analyse" class="container" style="width: 415px;height: 380px">
+    </div> -->
+    <script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+        var myChart1 = echarts.init(document.getElementById('Stamina analyse'));
+
+        // 指定图表的配置项和数据
+        var option = {
+            title: {
+                text: '五公里成绩分布'
+            },
+            tooltip: {},
+            legend: {
+                data: ['五公里']
+            },
+            xAxis: {
+                data: ["21:30以内", "21:30-22:00", "22:00-22:30", "22:30-22:50", "22:50-23:30", "23:00之后"]
+            },
+            yAxis: {},
+            series: [{
+                name: '五公里',
+                type: 'bar',
+                data: [5, 20, 36, 10, 10, 20]
+            }]
+        };
+
+        // 使用刚指定的配置项和数据显示图表。
+        myChart1.setOption(option);
+    </script>
+    <hr>
+    <div id="books" class="container">
+        <h2 align="center">书籍借阅类型统计分布</h2>
+    </div>
+    <div id="books analyse" class="container" style="width: 415px;height: 380px"></div>
+    <script type="text/javascript">
+        var myChart2 = echarts.init(document.getElementById('books analyse'));
+
+        var option = {
+            backgroundColor: '#2c343c',
+            visualMap: {
+                show: false,
+                min: 80,
+                max: 600,
+                inRange: {
+                    colorLightness: [0, 1]
+                }
+            },
+            series: [{
+                name: '访问来源',
+                type: 'pie',
+                radius: '55%',
+                data: [{
+                    value: 235,
+                    name: '哲学类'
+                }, {
+                    value: 274,
+                    name: '历史类'
+                }, {
+                    value: 310,
+                    name: '小说类'
+                }, {
+                    value: 335,
+                    name: '专业技术类'
+                }, {
+                    value: 400,
+                    name: '习主席系列'
+                }],
+                roseType: 'angle',
+                label: {
+                    normal: {
+                        textStyle: {
+                            color: 'rgba(255, 255, 255, 0.3)'
+                        }
+                    }
+                },
+                labelLine: {
+                    normal: {
+                        lineStyle: {
+                            color: 'rgba(255, 255, 255, 0.3)'
+                        }
+                    }
+                },
+                itemStyle: {
+                    normal: {
+                        color: '#c23531',
+                        shadowBlur: 200,
+                        shadowColor: 'rgba(0, 0, 0, 0.5)'
+                    }
+                }
+            }]
+        };
+
+        myChart2.setOption(option);
+    </script>
+</main>
+<footer class="container">
+    <p>&copy; Company 2017-2018</p>
+</footer>
+<!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
+<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+<!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</body>
+
+</html>
